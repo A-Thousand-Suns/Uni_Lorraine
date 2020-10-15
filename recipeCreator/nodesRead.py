@@ -1,4 +1,5 @@
-import  json
+import json
+import nltk
 
 path = r'G:\corpus\layer1.json'
 with open(path, 'r') as file:
@@ -17,5 +18,6 @@ with open(path, 'r') as file:
             for i in ingre:
                 print(i["text"])
                 text = i["text"]
+
 
             break
