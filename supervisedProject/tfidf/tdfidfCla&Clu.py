@@ -34,20 +34,24 @@ classor.fit(train_v, trainSet.target)
 result = list(classor.predict(test_v))
 print(type(testSet.target))
 right = 0
+
 for i in range(list(testSet.target).__len__()):
+
     if result[i]==list(testSet.target)[i]:
         right+=1
     else:
         print(str(i) + ': ' + str(result[i]))
 
 print(right / result.__len__())
+
 with open(r'E:\编程文件\python\Uni Lorraine\supervisedProject\temp.txt', 'a') as file:
     file.write(str(result))
     file.write('\n')
     file.write(str(list(testSet.target)))
-print(precision_score(testSet.target, result,average='micro'))
-# print(recall_score(testSet.target, result, average='micro'))
 
+print(precision_score(testSet.target, result,average='micro'))
+print(recall_score(testSet.target, result, average='micro'))
+print(type(train_v))
 
 
 
