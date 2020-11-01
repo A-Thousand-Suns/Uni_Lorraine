@@ -2,7 +2,7 @@ from sklearn.datasets import fetch_20newsgroups
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn import metrics
-import numpy as np;
+import numpy as np
 
 newsGroupTrain = fetch_20newsgroups(subset='train')
 print(newsGroupTrain.target[:10]) # [ 7  4  4  1 14 16 13  3  2  4]
