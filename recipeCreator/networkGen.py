@@ -29,3 +29,4 @@ with open(path, 'r') as file:
     pos = nx.shell_layout(G)
     nx.draw(G, pos, with_labels=False, node_size=30)
     plt.show()
+    

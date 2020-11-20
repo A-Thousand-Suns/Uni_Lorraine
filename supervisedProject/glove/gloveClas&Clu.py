@@ -26,18 +26,13 @@ def matrixCreat(dataSet, wordVectors):
                     error += 1
 
         docVec = docVec - np.array(wordVectors['the'])
-        if raw==0:
-            print(docVec)
-            print(time)
         docVec = [docVec[i]/time for i in range(50)]
         docVectorSet[raw] = docVec
         #print(error)
-        if raw==0:
-            print(docVec)
 
         raw += 1
 
-    print(docVectorSet[0])
+    #print(docVectorSet[0])
     return docVectorSet
 
 categories = ['alt.atheism', 'soc.religion.christian', 'comp.graphics', 'sci.med']
@@ -46,15 +41,13 @@ testSet = fetch_20newsgroups(subset='test', categories=categories)
 filePath = r'E:\编程文件\python\Uni Lorraine\supervisedProject\glove\test_word2vec.txt'
 model = KeyedVectors.load_word2vec_format(filePath)
 wordVectors = model.wv
-vec = wordVectors['you']
-print(trainSet.data[1])
-
 trainVecSet = matrixCreat(trainSet, wordVectors)
 testVecSet = matrixCreat(testSet, wordVectors)
 print(trainVecSet.shape)
-print(list(trainSet.target).__len__())
+print(testVecSet.shape)
 classor = SVC()
 classor.fit(trainVecSet, trainSet.target)
 result = list(classor.predict(testVecSet))
 print(precision_score(testSet.target, result, average='micro'))
+print(accuracy_score(testSet.target, result))
 

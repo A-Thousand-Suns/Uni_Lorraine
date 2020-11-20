@@ -44,14 +44,15 @@ for i in range(list(testSet.target).__len__()):
 
 print(right / result.__len__())
 
-with open(r'E:\编程文件\python\Uni Lorraine\supervisedProject\temp.txt', 'a') as file:
-    file.write(str(result))
-    file.write('\n')
-    file.write(str(list(testSet.target)))
+# with open(r'E:\编程文件\python\Uni Lorraine\supervisedProject\temp.txt', 'a') as file:
+#     file.write(str(result))
+#     file.write('\n')
+#     file.write(str(list(testSet.target)))
 
 print(precision_score(testSet.target, result,average='micro'))
 print(recall_score(testSet.target, result, average='micro'))
-print(type(train_v))
+print(train_v.shape)
+print(test_v.shape)
 
 
 

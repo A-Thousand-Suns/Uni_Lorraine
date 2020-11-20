@@ -36,3 +36,22 @@
 # sq_root(25)
 for i in range(2):
     print(i)
+s = '| song            |    Style     |'
+print(s.__len__())
+
+def hello(a:int):
+    '''hello'''
+    return a
+
+
+def autodoc(f):
+    # your code here
+
+    print(f.__doc__)
+    print(f.__annotations__)
+
+    for key, value in f.__annotations__.items():
+        print('....' + key + ': ' + value.__name__)
+
+
+autodoc(hello)
