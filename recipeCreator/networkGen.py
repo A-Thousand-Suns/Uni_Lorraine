@@ -1,5 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import pickle
+
 
 G = nx.Graph()
 path = r'E:\编程文件\python\Uni Lorraine\recipeCreator\nodes.txt'
@@ -29,10 +31,10 @@ with open(path, 'r') as file:
             else:
                 edges[x] +=1
 
-        if time==10:
-            break
-
 print(edges)
+network_path = r'E:\编程文件\python\Uni Lorraine\recipeCreator\network.pkl'
+with open(network_path, 'wb') as file:
+    pickle.dump(edges, file, pickle.HIGHEST_PROTOCOL)
 
 for edge, weight in edges.items():
     G.add_weighted_edges_from([(edge[0], edge[1], weight)])
