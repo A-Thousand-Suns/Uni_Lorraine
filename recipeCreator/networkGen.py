@@ -1,32 +1,42 @@
 import networkx as nx
-import itertools
 import matplotlib.pyplot as plt
 
 G = nx.Graph()
 path = r'E:\编程文件\python\Uni Lorraine\recipeCreator\nodes.txt'
+edges = dict()
 
 with open(path, 'r') as file:
     time = 0
 
     for i in file.readlines():
+
         time += 1
         nodes = i[:-2].split(' ')
-        edges = []
-        print(nodes)
+        temp_edges = []
 
-        for x in itertools.product(nodes, nodes):
+        for start in range(len(nodes)-1):
 
-            if x[0]==x[1]:
-                continue
+            for mark in range(start+1, len(nodes)):
+                l = [nodes[start], nodes[mark]]
+                l.sort()
+                temp_edges.append(tuple(l))
+
+        for x in temp_edges:
+
+            if(edges.get(x) == None):
+                edges[x] = 1
+
             else:
-                edges.append(x)
-        print(edges)
-        G.add_edges_from(edges)
+                edges[x] +=1
 
         if time==10:
             break
 
-    pos = nx.shell_layout(G)
-    nx.draw(G, pos, with_labels=False, node_size=30)
-    plt.show()
-    
+print(edges)
+
+for edge, weight in edges.items():
+    G.add_weighted_edges_from([(edge[0], edge[1], weight)])
+
+pos = nx.shell_layout(G)
+nx.draw(G, pos, with_labels=False, node_size=30)
+plt.show()
