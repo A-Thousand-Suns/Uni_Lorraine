@@ -4,7 +4,7 @@ import pickle
 
 
 G = nx.Graph()
-path = r'E:\编程文件\python\Uni Lorraine\recipeCreator\nodes.txt'
+path = r'E:\编程文件\python\Uni Lorraine\recipeCreator\all_nodes.txt'
 edges = dict()
 
 with open(path, 'r') as file:
@@ -41,4 +41,4 @@ for edge, weight in edges.items():
 
 pos = nx.shell_layout(G)
 nx.draw(G, pos, with_labels=False, node_size=30)
-plt.show()
+# plt.show()

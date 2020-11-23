@@ -22,16 +22,20 @@ with open(network_path, 'rb') as file:
 # print(network)
 
 for edge, weight in network.items():
-    G.add_weighted_edges_from([(edge[0], edge[1], 1.0/weight)])
+    weight = 1.0 / weight
+    # print(weight)
+    G.add_weighted_edges_from([(edge[0], edge[1], weight)])
 
+# print(G.edges(data= True))
 pos = nx.shell_layout(G)
 nx.draw(G, pos, with_labels=False, node_size=30)
 # plt.show()
 
-nodes_input = ['cheese', 'penne', 'sauce', 'gruyere', 'milk', 'rice', 'chicken']
+nodes_input = [ 'eggplant', 'coffee', 'pudding']
 nodes_isolate = []
 all_groups = []
 result = []
+test = nodes_input[:]
 
 for index in range(len(nodes_input)):
 
@@ -66,7 +70,7 @@ while (len(nodes_input) != 0):
     all_groups.append(temp_group)
     temp_group = []
 
-print(all_groups)
+# print(all_groups)
 
 for cell_group in all_groups:
 
@@ -86,17 +90,18 @@ for cell_group in all_groups:
 
             for node_target in cell_group:
 
-                path_dict[(node_source, node_target)] = nx.shortest_path_length(G, source=node_source, target=node_target, weight=True, method='dijkstra')
+                path_dict[(node_source, node_target)] = nx.shortest_path_length(G, source=node_source, target=node_target, weight='weight', method='dijkstra')
 
         print(path_dict)
         shortest_pair = find_shortest(path_dict)
         path_dict.clear()
-        path = nx.shortest_path(G, source=shortest_pair[0], target=shortest_pair[1], weight=True, method='dijkstra')
+        path = nx.shortest_path(G, source=shortest_pair[0], target=shortest_pair[1], weight='weight', method='dijkstra')
         result += path
         cell_group.remove(shortest_pair[1])
 
-# result = {}.fromkeys(result).keys()
 print({}.fromkeys(result).keys())
+print(test)
+
 
 
 

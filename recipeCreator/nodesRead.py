@@ -58,6 +58,6 @@ with open(path, 'r') as file:
                     for i in temp:
                         file.write(i + ' ')
                     file.write('\n')
-                if(time == 100000):
+                if(time == 1000):
                     break
 
