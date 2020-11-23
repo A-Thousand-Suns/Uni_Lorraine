@@ -18,3 +18,6 @@ l = [2, 1]
 print(l.sort())
 print(l)
 print(dic.get(3))
+a = [1,3]
+b = [2,4]
+print(a+b)
