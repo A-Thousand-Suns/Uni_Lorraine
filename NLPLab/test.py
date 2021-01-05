@@ -158,3 +158,55 @@ result = l[2::3]
 print(result)
 s = '123'
 print(s[:-1])
+
+class rape:
+    def __init__(self, name):
+        self.name = name
+    def happy(self):
+        print(self.name)
+
+test = rape("test")
+print(isinstance(test, rape))
+import operator       #首先要导入运算符模块
+operator.gt(1,2)      #意思是greater than（大于）
+operator.ge(1,2)      #意思是greater and equal（大于等于）
+operator.eq(1,2)      #意思是equal（等于）
+operator.le(1,2)      #意思是less and equal（小于等于）
+operator.lt(1,2)      #意思是less than（小于）
+print(operator.gt(1,2),      #意思是greater than（大于）
+operator.ge(1,2) ,     #意思是greater and equal（大于等于）
+operator.eq(1,2),      #意思是equal（等于）
+operator.le(1,2),      #意思是less and equal（小于等于）
+operator.lt(1,2) )
+d= {'a': 2}
+print(bool(d.get('r')))
+e = set()
+print(type(e))
+
+class Edge:
+    def __init__(self, start, end, cost=1.0, visited=False):
+        self.start = start
+        self.end = end
+        self.cost = cost
+        self.visited = visited
+
+    def __eq__(self, other):
+        if self.start==other.start and self.end==other.end and self.cost==other.cost and self.visited==other.visited:
+            return True
+        else:
+            return False
+
+f = Edge(end=1,start=2)
+g = Edge(end=1,start=2)
+print(f==g)
+
+class test_call:
+    def __init__(self, name):
+        self.name = name
+
+    def __call__(self, *args, **kwargs):
+        for i in args:
+            print(i)
+
+test = test_call('test')
+test('hello','hi')

@@ -1,3 +1,6 @@
+
+';lkjkl;'
+0
 from sklearn.datasets import fetch_20newsgroups
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
@@ -18,12 +21,12 @@ tokenFilter = nltk.tokenize.RegexpTokenizer(r'\w+')
 for doc in trainSet['data']:
     docNoPunc = tokenFilter.tokenize(doc.lower())
     print(docNoPunc)
-    
+
     break
 
 vectorizer = TfidfVectorizer()
-train_v=vectorizer.fit_transform(trainSet.data)
-test_v=vectorizer.transform(testSet.data)
+train_v = vectorizer.fit_transform(trainSet.data)
+test_v = vectorizer.transform(testSet.data)
 clusteror = KMeans(n_clusters=4).fit_predict(train_v)
 plt.show()
 print(type(train_v[0]))
@@ -37,8 +40,8 @@ right = 0
 
 for i in range(list(testSet.target).__len__()):
 
-    if result[i]==list(testSet.target)[i]:
-        right+=1
+    if result[i] == list(testSet.target)[i]:
+        right += 1
     else:
         print(str(i) + ': ' + str(result[i]))
 
@@ -49,13 +52,7 @@ print(right / result.__len__())
 #     file.write('\n')
 #     file.write(str(list(testSet.target)))
 
-print(precision_score(testSet.target, result,average='micro'))
+print(precision_score(testSet.target, result, average='micro'))
 print(recall_score(testSet.target, result, average='micro'))
 print(train_v.shape)
 print(test_v.shape)
-
-
-
-
-
-

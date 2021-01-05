@@ -1,6 +1,17 @@
 import networkx as nx
 import pickle
+import infomap
 import matplotlib.pyplot as plt
+
+def find_com(G):
+    parameter = '-N5 --flow-model<undirected> --slient'
+    im = infomap.Infomap()
+    for e in G.edges:
+        im.addLink(e)
+
+    im.run(parameter)
+    moduleResult = im.get_modules()
+    print(moduleResult)
 
 def find_shortest(path_dict:dict):
     shortest = 10000
@@ -31,7 +42,7 @@ pos = nx.shell_layout(G)
 nx.draw(G, pos, with_labels=False, node_size=30)
 # plt.show()
 
-nodes_input = [ 'eggplant', 'coffee', 'pudding']
+nodes_input = [ 'coffee', 'pudding']
 nodes_isolate = []
 all_groups = []
 result = []
@@ -101,7 +112,9 @@ for cell_group in all_groups:
 
 print({}.fromkeys(result).keys())
 print(test)
+#print(G.edges)
 
+find_com(G)
 
 
 
